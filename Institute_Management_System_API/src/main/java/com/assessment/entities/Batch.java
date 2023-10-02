@@ -1,9 +1,14 @@
 package com.assessment.entities;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Batch {
@@ -23,6 +28,9 @@ public class Batch {
 	@ManyToOne
 	private Courses courses;
 
+//	@OneToMany
+//	private List<Candidate> candidate;
+//	
 	public Batch() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -121,13 +129,22 @@ public class Batch {
 
 	public void setCourses(Courses courses) {
 		this.courses = courses;
-	}
+	}	
+	
+//	public List<Candidate> getCandidate() {
+//		return candidate;
+//	}
+//
+//	public void setCandidate(List<Candidate> candidate) {
+//		this.candidate = candidate;
+//	}
 
 	@Override
 	public String toString() {
 		return "Batch [batchId=" + batchId + ", batchName=" + batchName + ", mode=" + mode + ", fees=" + fees
 				+ ", batch_duration=" + batch_duration + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", numberOfSeatch=" + numberOfSeatch + ", batchTime=" + batchTime + ", courses=" + courses + "]";
+				+ ", numberOfSeatch=" + numberOfSeatch + ", batchTime=" + batchTime + ", courses=" + courses
+				+ ", candidate]";
 	}
 	
 }
