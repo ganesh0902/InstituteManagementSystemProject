@@ -22,6 +22,9 @@ public class Courses {
 	@OneToMany(mappedBy = "courses",fetch =  FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<Batch> batch;
 	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	private Teacher teacher;
+	
 	public Courses() {
 		super();
 		// TODO Auto-generated constructor stub

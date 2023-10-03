@@ -3,7 +3,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,9 +30,9 @@ public class Batch {
 	@ManyToOne
 	private Courses courses;
 
-//	@OneToMany
-//	private List<Candidate> candidate;
-//	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	private Teacher teacher;
+	
 	public Batch() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -50,6 +52,22 @@ public class Batch {
 		this.batchTime = batchTime;
 		
 	}
+
+//	public Batch(int batchId, String batchName, String mode, String fees, String batch_duration, String startDate,
+//			String endDate, int numberOfSeatch, String batchTime, Courses courses, Teacher teacher) {
+//		super();
+//		this.batchId = batchId;
+//		this.batchName = batchName;
+//		this.mode = mode;
+//		this.fees = fees;
+//		this.batch_duration = batch_duration;
+//		this.startDate = startDate;
+//		this.endDate = endDate;
+//		this.numberOfSeatch = numberOfSeatch;
+//		this.batchTime = batchTime;
+//		this.courses = courses;
+//		this.teacher = teacher;
+//	}
 
 	public int getBatchId() {
 		return batchId;
@@ -130,13 +148,13 @@ public class Batch {
 	public void setCourses(Courses courses) {
 		this.courses = courses;
 	}	
-	
-//	public List<Candidate> getCandidate() {
-//		return candidate;
+
+//	public Teacher getTeacher() {
+//		return teacher;
 //	}
 //
-//	public void setCandidate(List<Candidate> candidate) {
-//		this.candidate = candidate;
+//	public void setTeacher(Teacher teacher) {
+//		this.teacher = teacher;
 //	}
 
 	@Override

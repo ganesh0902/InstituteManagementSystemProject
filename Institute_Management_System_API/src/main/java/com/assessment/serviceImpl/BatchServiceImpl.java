@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.assessment.entities.Batch;
 import com.assessment.entities.Courses;
+import com.assessment.entities.Teacher;
 import com.assessment.exception.ResourceNotFoundException;
 import com.assessment.repository.BatchRepository;
 import com.assessment.service.BatchService;
@@ -17,13 +18,16 @@ public class BatchServiceImpl implements BatchService {
 	private BatchRepository batchRepository; 
 	
 	@Autowired
+	private TeacherServiceImpl teacherServiceImpl;
+	
+	@Autowired
 	private CourseServiceImpl courseServiceImpl;
 	
 	@Override
 	public Batch addBatch(Batch batch,int courseId) throws ResourceNotFoundException {
 				
-		Courses single = courseServiceImpl.getSingle(courseId);
-		
+		Courses single = courseServiceImpl.getSingle(courseId);		
+				
 		batch.setCourses(single);
 										
 		return batchRepository.save(batch);
@@ -34,10 +38,12 @@ public class BatchServiceImpl implements BatchService {
 		
 		Batch batchRecord = batchRepository.findById(batchId).orElseThrow(()-> new ResourceNotFoundException("Batch","Id", batchId));
 		
+		//Teacher singleTeacher = this.teacherServiceImpl.getSingleTeacher(teacherId);
+		
 		batchRecord.setBatch_duration(batch.getBatch_duration());
 		batchRecord.setBatchName(batch.getBatchName());
 		batchRecord.setBatchTime(batch.getBatchTime());
-				
+		//batchRecord.setTeacher(singleTeacher);		
 		Courses single = courseServiceImpl.getSingle(courseId);
 		
 		batchRecord.setCourses(single);		

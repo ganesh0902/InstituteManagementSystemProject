@@ -30,11 +30,13 @@ public class BatchController {
 	@PostMapping("/{courseId}")
 	public ResponseEntity<Batch> addbatch(@RequestBody Batch batch,@PathVariable("courseId") int courseId) throws ResourceNotFoundException
 	{
-		Batch addBatch = batchServiceImpl.addBatch(batch,courseId);
+		//Batch addBatch = batchServiceImpl.addBatch(batch,courseId);
+		
+		Batch addBatch = this.batchServiceImpl.addBatch(batch, courseId);
 		
 		return ResponseEntity.status(HttpStatus.OK).body(addBatch);
 	}
-	@PutMapping("/{batchId}/{courseId}")
+	@PutMapping("/{batchId}/{courseId}/{teacherId}")
 	public ResponseEntity<Batch> updateBatch(@RequestBody Batch batch,@PathVariable("batchId") int bId,@PathVariable("courseId") int courseId) throws ResourceNotFoundException
 	{
 		Batch updateBatch = batchServiceImpl.updateBatch(batch, bId,courseId);
